@@ -53,10 +53,10 @@ public class urlHandler implements oembedHandler {
     @Override
     public String vimeoHandler(String url) {
         System.out.println("urlHandler.vimeoHandler");
-        String top="https://www.youtube.com/oembed?url=https%3A//youtube.com/watch%3Fv%3D";
-        String mid = url.split("watch\\?v=")[1];
-        String botm="&format=json";
-        String result=top+mid+botm;
+        //https://vimeo.com/api/oembed.json?url=https://vimeo.com/20097015
+        String top="https://vimeo.com/api/oembed.json?url=";
+        String mid = url;
+        String result=top+mid;
         return result;
     }
 

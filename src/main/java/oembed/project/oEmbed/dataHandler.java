@@ -34,7 +34,7 @@ public class dataHandler {
 
         return data;
     }
-
+//유니코드 변환
     public static String convertString(String val) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < val.length(); i++) {

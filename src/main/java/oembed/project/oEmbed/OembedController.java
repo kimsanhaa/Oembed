@@ -13,7 +13,6 @@ import java.io.IOException;
 
 @Controller
 public class OembedController {
-
     //수정 해야함 좋은 di로
     @Autowired
     urlHandler urlHandler;
@@ -29,13 +28,11 @@ public class OembedController {
 
     @GetMapping("/search")
     @ResponseBody
-    public void search(HttpServletRequest request) throws IOException {
+    public String search(HttpServletRequest request) throws IOException {
         String url = request.getParameter("url");
-        //System.out.println("value?==="+value);
         String result = urlHandler.urlConnector(url);
-        System.out.println(result);
         String data = service.getData(result);
-
+        return data;
     }
 
 
