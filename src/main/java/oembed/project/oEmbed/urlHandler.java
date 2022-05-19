@@ -12,6 +12,8 @@ public class urlHandler implements oembedHandler {
         String instagram = "www.instagram.com";
         String twitter = "twitter.com";
         String vimeo = "vimeo.com";
+        //nullpointer exception -> controller가 없습니다. 해야함
+        //youtube만 했음 나머지도 해야함
 
         if(url.contains(youtube))return youtubeHandler(url);
         else if (url.contains(instagram))return instagramHandler(url);
@@ -20,7 +22,6 @@ public class urlHandler implements oembedHandler {
 
         return "Controller가 없습니다.";
     }
-
 
     @Override
     public String youtubeHandler(String url) {
