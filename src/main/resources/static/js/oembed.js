@@ -4,7 +4,7 @@ function search(){
     $.ajax({
         type: 'GET',
         url: "/search",
-        data: {"value":value}
+       data:{"value":value}
     })
 
 }
