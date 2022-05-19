@@ -22,10 +22,10 @@ public class OembedController {
 
     @RequestMapping("/search")
     public void search(HttpServletRequest request){
-        String value = request.getParameter("value");
+        String url = request.getParameter("url");
         //System.out.println("value?==="+value);
-        String temp = urlHandler.youtubeHandler(value);
-        System.out.println(temp);
+        String result = urlHandler.urlConnector(url);
+        System.out.println(result);
     }
 
 
