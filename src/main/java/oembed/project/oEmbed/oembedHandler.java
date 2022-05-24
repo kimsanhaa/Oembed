@@ -5,5 +5,4 @@ public interface oembedHandler {
      String instagramHandler(String url);
      String twitterHandler(String url);
      String vimeoHandler(String url);
-
 }

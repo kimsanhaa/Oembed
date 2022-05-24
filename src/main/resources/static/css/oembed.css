@@ -8,5 +8,35 @@
 .searchBar{text-align: center; padding-top: 50px;}
 .search{width:90%; height: 60px;border:none;}
 .btn{background-color: #d8c90e; margin-left: -80px;width: 60px; height: 40px; font-weight: bold; border:none;}
-.div_3{background-color: #cae3ed; height: 1000px; overflow: hidden; }
-.content{margin: 20px 20px 20px 20px; background-color: white; height: 900px;}
+.div_3{background-color: #cae3ed;overflow: hidden; }
+#content{margin: 20px 20px 20px 20px; background-color: white; height: 2000px;}
+table{width: 200px;}
+tr{width:200px;}
+td{ text-align: center;  margin-top: 30px;}
+span{display: block;}
+xmp{
+    vertical-align: middle;
+    text-align: center;
+    width: 85%;
+    float: right;
+    height: 50px;
+    white-space: normal ;
+}
+div span:nth-child(1){
+    vertical-align: middle;
+    text-align: center;
+    float: left;
+    width: 15%;
+    height: 50px;
+}
+div span:nth-child(2){
+    vertical-align: middle;
+    text-align: center;
+    width: 85%;
+    float: right;
+    height: 50px;
+
+}
+.div_4:nth-child(1){
+
+}

@@ -1,11 +1,16 @@
 package oembed.project.oEmbed;
 
 
+
+import com.google.gson.JsonObject;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -18,7 +23,11 @@ public class OembedController {
     urlHandler urlHandler;
 
     @Autowired
-    dataHandler service;
+    dataConfig dataconfig;
+
+    @Autowired
+    jsonHadnler jsonhandler;
+
 
     @RequestMapping("/oembed")
     public String controller(){
@@ -28,11 +37,12 @@ public class OembedController {
 
     @GetMapping("/search")
     @ResponseBody
-    public String search(HttpServletRequest request) throws IOException {
+    public JSONObject search(HttpServletRequest request, Model model) throws IOException {
         String url = request.getParameter("url");
         String result = urlHandler.urlConnector(url);
-        String data = service.getData(result);
-        return data;
+        String data = dataconfig.getData(result);
+        JSONObject jsonData = jsonhandler.jsonHadnler(data);
+        return jsonData;
     }
 
 

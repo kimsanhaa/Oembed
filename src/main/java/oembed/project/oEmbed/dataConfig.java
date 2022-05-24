@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 @Component
-public class dataHandler {
+public class dataConfig {
 
     public String getData(String url) throws IOException {
         String data = null;
@@ -26,6 +26,7 @@ public class dataHandler {
             while(br.ready()) {
                sb.append(br.readLine());
             }
+            System.out.println(sb);
              data = convertString(String.valueOf(sb));
 
         }catch(Exception e) {

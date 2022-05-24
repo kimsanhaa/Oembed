@@ -19,7 +19,6 @@ public class urlHandler implements oembedHandler {
         else if (url.contains(instagram))return instagramHandler(url);
         else if (url.contains(twitter))return twitterHandler(url);
         else if (url.contains(vimeo))return vimeoHandler(url);
-
         return "Controller가 없습니다.";
     }
 
@@ -30,6 +29,7 @@ public class urlHandler implements oembedHandler {
         String mid = url.split("watch\\?v=")[1];
         String botm="&format=json";
         String result=top+mid+botm;
+        System.out.println(result);
         return result;
     }
     @Override
