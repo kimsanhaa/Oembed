@@ -12,7 +12,9 @@
 
 
 <h3>YOUTUBE요청</h3>
-![image](https://user-images.githubusercontent.com/98083809/170271874-32728f61-a53f-4c14-81da-9f53d9459d97.png)
+<img width="80%" src="https://user-images.githubusercontent.com/98083809/170271874-32728f61-a53f-4c14-81da-9f53d9459d97.png"/>
+
+
 
 <h3>VIMEO요청</h3>
 ![image](https://user-images.githubusercontent.com/98083809/170271964-abd27032-dd38-4f9d-be28-ecf418162a52.png)
