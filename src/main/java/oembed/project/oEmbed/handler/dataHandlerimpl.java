@@ -1,7 +1,6 @@
 package oembed.project.oEmbed.handler;
 
 
-import oembed.project.oEmbed.service.OembedServiceimpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

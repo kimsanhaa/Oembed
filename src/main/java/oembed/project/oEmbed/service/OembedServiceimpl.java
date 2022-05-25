@@ -1,7 +1,6 @@
 package oembed.project.oEmbed.service;
 
 
-import oembed.project.oEmbed.controller.OembedControllerimpl;
 import oembed.project.oEmbed.handler.dataHandlerimpl;
 import oembed.project.oEmbed.handler.jsonHadnlerimpl;
 import org.json.simple.JSONObject;
