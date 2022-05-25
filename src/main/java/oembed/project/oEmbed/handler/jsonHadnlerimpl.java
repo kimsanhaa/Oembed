@@ -1,20 +1,24 @@
 package oembed.project.oEmbed.handler;
 
 
+import oembed.project.oEmbed.service.OembedServiceimpl;
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 
 
 @Component
 public class jsonHadnlerimpl implements jsonHandler {
+    private static final Logger log = LoggerFactory.getLogger(jsonHadnlerimpl.class);
 
     public jsonHadnlerimpl() {
     }
 
     @Override
     public JSONObject youtubeJson(String data){
-        System.out.println("jsonHadnler.youtubeJson");
+        log.info("jsonHadnlerimpl.youtubeJson");
         JSONObject jsonobj = new JSONObject();
         String [] key = new String[]{"title","author_name","author_url","type","height","width","version","provider_name","provider_url","thumbnail_height","thumbnail_width","thumbnail_url","html"};
         data=data.replace("{","");
@@ -48,10 +52,9 @@ public class jsonHadnlerimpl implements jsonHandler {
 
     @Override
     public JSONObject vimeoJson(String data){
-        System.out.println("jsonHadnler.vimeoJson");
+        log.info("jsonHadnlerimpl.vimeoJson");
         JSONObject jsonobj = new JSONObject();
         String [] key = new String[]{"type","version","provider_name","provider_url","title","author_name","author_url","is_plus","account_type","html","width","height","duration","description","thumbnail_url","thumbnail_width","thumbnail_height","thumbnail_url_with_play_button","upload_date","video_id","uri"};
-        System.out.println(data);
         data=data.replace("{","");
         jsonobj.put("url","vimeo");
         for(int i=0; i<key.length; i++){

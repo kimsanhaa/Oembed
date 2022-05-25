@@ -1,6 +1,9 @@
 package oembed.project.oEmbed.handler;
 
 
+import oembed.project.oEmbed.service.OembedServiceimpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -11,11 +14,13 @@ import java.net.URL;
 
 @Component
 public class dataHandlerimpl implements  dataHandler{
+    private static final Logger log = LoggerFactory.getLogger(dataHandlerimpl.class);
+
 
     @Override
     public String getData(String url) throws IOException {
+      log.info("dataHandlerimpl.getData");
         String data = null;
-        System.out.println("Service.getData");
        URL uri = new URL(url);
         HttpURLConnection conn = (HttpURLConnection) uri.openConnection();
         conn.setRequestMethod("GET");
@@ -27,7 +32,6 @@ public class dataHandlerimpl implements  dataHandler{
             while(br.ready()) {
                sb.append(br.readLine());
             }
-            System.out.println(sb);
              data = convertString(String.valueOf(sb));
 
         }catch(Exception e) {

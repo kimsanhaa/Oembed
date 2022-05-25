@@ -1,25 +1,33 @@
 package oembed.project.oEmbed.service;
 
 
+import oembed.project.oEmbed.controller.OembedControllerimpl;
 import oembed.project.oEmbed.handler.dataHandlerimpl;
 import oembed.project.oEmbed.handler.jsonHadnlerimpl;
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @Service
 public class OembedServiceimpl implements OembedService {
+    private static final Logger log = LoggerFactory.getLogger(OembedServiceimpl.class);
+
+    private final dataHandlerimpl datahanlderimpl;
+    private final jsonHadnlerimpl jsonhandler;
 
     @Autowired
-    dataHandlerimpl datahandler;
+    public OembedServiceimpl(dataHandlerimpl datahanlderimpl, jsonHadnlerimpl jsonhandler) {
+        this.datahanlderimpl=datahanlderimpl;
+        this.jsonhandler=jsonhandler;
+    }
 
-    @Autowired
-    jsonHadnlerimpl jsonhandler;
 
     public JSONObject urlConnector(String url) throws IOException {
+        log.info("OembedServiceimpl.urlConnector");
         String youtube = "www.youtube.com";
         String instagram = "www.instagram.com";
         String twitter = "twitter.com";
@@ -31,13 +39,15 @@ try {
     else if (url.contains(twitter)) return twitterHandler(url);
     else if (url.contains(vimeo)) return vimeoHandler(url);
     else{ return getError();}
-}catch (NullPointerException e){getError();
+}catch (NullPointerException e){
+    log.info("NullPointerException");
+    getError();
          return null;}
     }
 
     @Override
     public JSONObject youtubeHandler(String url) throws IOException {
-        System.out.println("urlHandler.youtubeHandler");
+        log.info("OembedServiceimpl.youtubeHandler");
         String top="https://www.youtube.com/oembed?url=https%3A//youtube.com/watch%3Fv%3D";
         String mid = url.split("watch\\?v=")[1];
         String botm="&format=json";
@@ -49,7 +59,6 @@ try {
 
     @Override
     public JSONObject instagramHandler(String url) throws IOException {
-        System.out.println("urlHandler.instagramHandler");
         String result= null;
         String jsonData = getJsonObject(result);
 
@@ -58,7 +67,6 @@ try {
 
     @Override
     public JSONObject twitterHandler(String url) throws IOException {
-        System.out.println("urlHandler.twitterHandler");
         String  result = null;
         String jsonData = getJsonObject(result);
         return null;
@@ -66,7 +74,7 @@ try {
 
     @Override
     public JSONObject vimeoHandler(String url) throws IOException {
-        System.out.println("urlHandler.vimeoHandler");
+        log.info("OembedServiceimpl.vimeoHandler");
         //https://vimeo.com/api/oembed.json?url=https://vimeo.com/20097015
         String top="https://vimeo.com/api/oembed.json?url=";
         String mid = url;
@@ -79,14 +87,15 @@ try {
             return jsonhandler.vimeoJson(jsonData);
         } catch(StringIndexOutOfBoundsException e){
             JSONObject jsonobj = new JSONObject();
-            jsonobj.put("error","vimeo");
+            jsonobj.put("error","error");
             jsonobj.put("msg","vimeo oembed 기능은 보안 오류 때문에 결과를 가져오는데 문제가 있을 수 있습니다.\n" +
                     "중복하여 누르면 결과가 나오니 다시 한번 눌러주세요.");
+            log.info("StringIndexOutOfBoundsException");
             return jsonobj;
         }
     }
     private String getJsonObject(String result) throws IOException {
-        String data = datahandler.getData(result);
+        String data = datahanlderimpl.getData(result);
         return data;
     }
 
