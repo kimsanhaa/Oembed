@@ -7,13 +7,14 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @Service
 public class OembedServiceimpl implements OembedService {
 
     @Autowired
-    dataHandlerimpl dataconfig;
+    dataHandlerimpl datahandler;
 
     @Autowired
     jsonHadnlerimpl jsonhandler;
@@ -24,12 +25,14 @@ public class OembedServiceimpl implements OembedService {
         String twitter = "twitter.com";
         String vimeo = "vimeo.com";
 
-
-        if(url.contains(youtube))return youtubeHandler(url);
-        else if (url.contains(instagram))return instagramHandler(url);
-        else if (url.contains(twitter))return twitterHandler(url);
-        else if (url.contains(vimeo))return vimeoHandler(url);
-        return null;
+try {
+    if (url.contains(youtube)) return youtubeHandler(url);
+    else if (url.contains(instagram)) return instagramHandler(url);
+    else if (url.contains(twitter)) return twitterHandler(url);
+    else if (url.contains(vimeo)) return vimeoHandler(url);
+    else{ return getError();}
+}catch (NullPointerException e){getError();
+         return null;}
     }
 
     @Override
@@ -60,6 +63,7 @@ public class OembedServiceimpl implements OembedService {
         String jsonData = getJsonObject(result);
         return null;
     }
+
     @Override
     public JSONObject vimeoHandler(String url) throws IOException {
         System.out.println("urlHandler.vimeoHandler");
@@ -81,10 +85,16 @@ public class OembedServiceimpl implements OembedService {
             return jsonobj;
         }
     }
-
     private String getJsonObject(String result) throws IOException {
-        String data = dataconfig.getData(result);
+        String data = datahandler.getData(result);
         return data;
+    }
+
+    private JSONObject getError() {
+        JSONObject jsonobj = new JSONObject();
+        jsonobj.put("error","error");
+        jsonobj.put("msg","죄송합니다. 아직 준비가 안된 서비스 url 입니다. 현재는 유튜브와 vimeo만 가능합니다. 빠른 시일 내에 반영 할 수 있도록 하겠습니다.");
+        return jsonobj;
     }
 
 }//end

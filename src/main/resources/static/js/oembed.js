@@ -66,7 +66,7 @@ function resultHtml(data) {
         $("#content").empty();
         $("#content").append(html);
     }
-    else if (data.error="vimeo"){
+    else if (data.error="error"){
         alert(data.msg)
     }
 }
