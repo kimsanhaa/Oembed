@@ -17,4 +17,5 @@
 
 
 <h3>VIMEO요청</h3>
-![image](https://user-images.githubusercontent.com/98083809/170271964-abd27032-dd38-4f9d-be28-ecf418162a52.png)
+<img width="80%" src="https://user-images.githubusercontent.com/98083809/170271964-abd27032-dd38-4f9d-be28-ecf418162a52.png"/>
+
