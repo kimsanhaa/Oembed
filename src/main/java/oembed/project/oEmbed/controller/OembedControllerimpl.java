@@ -1,8 +1,8 @@
-package oembed.project.oEmbed;
+package oembed.project.oEmbed.controller;
 
 
 
-import com.google.gson.JsonObject;
+import oembed.project.oEmbed.service.OembedServiceimpl;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,31 +17,23 @@ import java.io.IOException;
 
 
 @Controller
-public class OembedController {
-    //수정 해야함 좋은 di로
-    @Autowired
-    urlHandler urlHandler;
+public class OembedControllerimpl  implements  OemberController{
 
     @Autowired
-    dataConfig dataconfig;
-
-    @Autowired
-    jsonHadnler jsonhandler;
-
+    OembedServiceimpl oembedServiceimpl;
 
     @RequestMapping("/oembed")
+    @Override
     public String controller(){
-        System.out.println("oemberdController 작동");
         return "thymeleaf/oembed";
     }
 
+
     @GetMapping("/search")
     @ResponseBody
+    @Override
     public JSONObject search(HttpServletRequest request, Model model) throws IOException {
         String url = request.getParameter("url");
-        return urlHandler.urlConnector(url);
+        return oembedServiceimpl.urlConnector(url);
     }
-
-
-
 }

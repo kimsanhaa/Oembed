@@ -53,18 +53,21 @@ function resultHtml(data) {
             "<span style='height:700px;'><xmp>" + data.html + "</xmp>"+ data.html + "</span></div>";
         html +=  "<div>" + "<span style='background-color:#f4f4f4'>width</span><span style='background-color:#f4f4f4'>" + data.width + "</span></div>"
         html +=  "<div>" + "<span>height</span><span>" + data.height + "</span></div>"
-        html +=  "<div>" + "<span>duration</span><span>" + data.duration + "</span></div>"
+        html +=  "<div>" + "<span style='background-color:#f4f4f4 '>duration</span><span style='background-color:#f4f4f4'>" + data.duration + "</span></div>"
         html +=  "<div>" + "<span>description</span><span>" + data.description + "</span></div>"
         html+="<div>" + "<span style='height: 700px; background-color: #f4f4f4'>thumbnail_url<br/>(" + data.thumbnail_width + "/" + data.thumbnail_height + ")</span><span style='height: 700px; background-color: #f4f4f4'><a href='" +data.thumbnail_url+"'>" + data.thumbnail_url + "</a><br/><br/><img src='"+data.thumbnail_url+"'/></span></div>";
         html +=  "<div>" + "<span>thumbnail_width</span><span>" + data.thumbnail_width + "</span></div>"
         html +=  "<div>" + "<span style='background-color:#f4f4f4 '>thumbnail_height</span><span style='background-color: #f4f4f4'>" + data.thumbnail_height + "</span></div>"
-        html +=  "<div>" + "<span style='background-color:#f4f4f4; height: 100px;'>thumbnail_url_with_<br/>play_button</span><span style='background-color:#f4f4f4; height: 100px;'>" +"<a href="+ data.thumbnail_url_with_play_button + ">"+data.thumbnail_url_with_play_button+"</a></span></div>"
-        html +=  "<div>" + "<span>upload_date</span><span>" + data.upload_date + "</span></div>"
+        html +=  "<div>" + "<span style='height: 100px;'>thumbnail_url_with_<br/>play_button</span><span style='height: 100px;'>" +"<a href="+ data.thumbnail_url_with_play_button + ">"+data.thumbnail_url_with_play_button+"</a></span></div>"
+        html +=  "<div>" + "<span style='background-color:#f4f4f4'>upload_date</span><span style='background-color:#f4f4f4 '>" + data.upload_date + "</span></div>"
         html +=  "<div>" + "<span>video_id</span><span>" + data.video_id + "</span></div>"
-        html +=  "<div>" + "<span>uri</span><span>" + data.uri + "</span></div>"
+        html +=  "<div>" + "<span style='background-color:#f4f4f4 '>uri</span><span style='background-color:#f4f4f4'>" + data.uri + "</span></div>"
         html+="</div>"
         $("#content").empty();
         $("#content").append(html);
+    }
+    else if (data.error="vimeo"){
+        alert(data.msg)
     }
 }
 //

@@ -1,4 +1,4 @@
-package oembed.project.oEmbed;
+package oembed.project.oEmbed.handler;
 
 
 import org.springframework.stereotype.Component;
@@ -10,8 +10,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 @Component
-public class dataConfig {
+public class dataHandlerimpl implements  dataHandler{
 
+    @Override
     public String getData(String url) throws IOException {
         String data = null;
         System.out.println("Service.getData");
@@ -36,7 +37,8 @@ public class dataConfig {
         return data;
     }
 //유니코드 변환
-    public static String convertString(String val) {
+    @Override
+    public  String convertString(String val) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < val.length(); i++) {
             if ('\\' == val.charAt(i) && 'u' == val.charAt(i + 1)) {

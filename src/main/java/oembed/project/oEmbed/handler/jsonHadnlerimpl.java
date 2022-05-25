@@ -1,14 +1,18 @@
-package oembed.project.oEmbed;
+package oembed.project.oEmbed.handler;
 
 
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
+
 
 @Component
-public class jsonHadnler {
+public class jsonHadnlerimpl implements jsonHandler {
 
+    public jsonHadnlerimpl() {
+    }
+
+    @Override
     public JSONObject youtubeJson(String data){
         System.out.println("jsonHadnler.youtubeJson");
         JSONObject jsonobj = new JSONObject();
@@ -40,6 +44,10 @@ public class jsonHadnler {
 
 
     }
+
+
+
+    @Override
     public JSONObject vimeoJson(String data){
         System.out.println("jsonHadnler.vimeoJson");
         JSONObject jsonobj = new JSONObject();
@@ -85,10 +93,6 @@ public class jsonHadnler {
                 jsonobj.put(key[i], value);
             }
 
-        }
-        System.out.println("value값 확인");
-        for (Object value : jsonobj.values()) {
-            System.out.println(value);
         }
         return jsonobj;
 
