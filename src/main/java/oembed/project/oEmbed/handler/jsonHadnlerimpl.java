@@ -30,7 +30,6 @@ public class jsonHadnlerimpl implements jsonHandler {
 
                 int start = data.indexOf(key[i]);
                 int end = data.indexOf(key[i + 1]);
-                System.out.println(i + "번째");
                 String value = data.substring(start+key[i].length()+2, end);
                 value = value.replace(",","");
                 value= value.replace("\"","");
@@ -70,7 +69,6 @@ public class jsonHadnlerimpl implements jsonHandler {
                 int start = data.indexOf(key[i]);
                 int end= data.indexOf("}");
                 String value = data.substring(start+key[i].length()+3, end);
-                System.out.println(value);
                 value=value.replace("\\", "");
                 value = value.replace(",","");
                 value= value.replace("\"","");
