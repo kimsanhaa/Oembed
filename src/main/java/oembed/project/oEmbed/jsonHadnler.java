@@ -9,11 +9,9 @@ import java.util.HashMap;
 @Component
 public class jsonHadnler {
 
-
-    public JSONObject jsonHadnler(String data){
-
+    public JSONObject youtubeJson(String data){
+        System.out.println("jsonHadnler.youtubeJson");
         JSONObject jsonobj = new JSONObject();
-
         String [] key = new String[]{"title","author_name","author_url","type","height","width","version","provider_name","provider_url","thumbnail_height","thumbnail_width","thumbnail_url","html"};
         data=data.replace("{","");
         jsonobj.put("url","youtube");
@@ -40,6 +38,59 @@ public class jsonHadnler {
         return jsonobj;
 
 
+
+    }
+    public JSONObject vimeoJson(String data){
+        System.out.println("jsonHadnler.vimeoJson");
+        JSONObject jsonobj = new JSONObject();
+        String [] key = new String[]{"type","version","provider_name","provider_url","title","author_name","author_url","is_plus","account_type","html","width","height","duration","description","thumbnail_url","thumbnail_width","thumbnail_height","thumbnail_url_with_play_button","upload_date","video_id","uri"};
+        System.out.println(data);
+        data=data.replace("{","");
+        jsonobj.put("url","vimeo");
+        for(int i=0; i<key.length; i++){
+            if(i==11){
+                int start = data.indexOf(key[i]);
+                int end= data.indexOf("frameborder");
+                String value = data.substring(start+key[i].length()+3, end);
+                value=value.replace("\\", "");
+                value= value.replace("\"","");
+                jsonobj.put(key[i], value);
+                continue;
+
+            }
+            if(i== key.length-1){
+                int start = data.indexOf(key[i]);
+                int end= data.indexOf("}");
+                String value = data.substring(start+key[i].length()+3, end);
+                System.out.println(value);
+                value=value.replace("\\", "");
+                value = value.replace(",","");
+                value= value.replace("\"","");
+                jsonobj.put(key[i], value);
+            }
+            else if(key[i]=="html"){
+                int start = data.indexOf(key[i]);
+                int end = data.indexOf("<\\/iframe>");
+                String value = data.substring(start+key[i].length()+3, end-1)+"><\\/iframe>";
+                value=value.replace("\\", "");
+                jsonobj.put(key[i], value);
+            }
+            else {
+                int start = data.indexOf(key[i]);
+                int end = data.indexOf(key[i + 1]);
+                String value = data.substring(start+key[i].length()+2, end-1);
+                value=value.replace("\\", "");
+                value = value.replace(",","");
+                value= value.replace("\"","");
+                jsonobj.put(key[i], value);
+            }
+
+        }
+        System.out.println("value값 확인");
+        for (Object value : jsonobj.values()) {
+            System.out.println(value);
+        }
+        return jsonobj;
 
     }
 

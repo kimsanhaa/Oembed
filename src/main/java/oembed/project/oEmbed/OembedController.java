@@ -39,10 +39,7 @@ public class OembedController {
     @ResponseBody
     public JSONObject search(HttpServletRequest request, Model model) throws IOException {
         String url = request.getParameter("url");
-        String result = urlHandler.urlConnector(url);
-        String data = dataconfig.getData(result);
-        JSONObject jsonData = jsonhandler.jsonHadnler(data);
-        return jsonData;
+        return urlHandler.urlConnector(url);
     }
 
 

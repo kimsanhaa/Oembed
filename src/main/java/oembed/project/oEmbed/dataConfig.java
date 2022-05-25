@@ -32,7 +32,7 @@ public class dataConfig {
         }catch(Exception e) {
             e.printStackTrace();
         }
-
+//daata 유효성 검사 해야함
         return data;
     }
 //유니코드 변환

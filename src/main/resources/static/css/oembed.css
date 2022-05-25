@@ -13,7 +13,7 @@
 table{width: 200px;}
 tr{width:200px;}
 td{ text-align: center;  margin-top: 30px;}
-span{display: block;}
+span{display: block;white-space: normal;}
 xmp{
     vertical-align: middle;
     text-align: center;
