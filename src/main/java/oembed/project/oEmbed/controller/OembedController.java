@@ -19,28 +19,24 @@ import java.io.IOException;
 
 
 @Controller
-public class OembedControllerimpl  implements  OemberController{
-
-    private static final Logger log = LoggerFactory.getLogger(OembedControllerimpl.class);
-
+public class OembedController {
+    private static final Logger log = LoggerFactory.getLogger(OembedController.class);
    private final  OembedServiceimpl oembedserviceimpl;
 
     @Autowired
-    public OembedControllerimpl(OembedServiceimpl oembedserviceimpl) {
+    public OembedController(OembedServiceimpl oembedserviceimpl) {
         this.oembedserviceimpl = oembedserviceimpl;
     }
 
     @RequestMapping("/oembed")
-    @Override
-    public String controller(){
 
+    public String controller(){
         return "thymeleaf/oembed";
     }
 
-
     @GetMapping("/search")
     @ResponseBody
-    @Override
+
     public JSONObject search(HttpServletRequest request, Model model) throws IOException {
         log.info("search controller 작동");
         String url = request.getParameter("url");

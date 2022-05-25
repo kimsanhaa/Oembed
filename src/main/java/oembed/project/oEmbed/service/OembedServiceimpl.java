@@ -51,7 +51,7 @@ try {
         String mid = url.split("watch\\?v=")[1];
         String botm="&format=json";
         String result=top+mid+botm;
-
+        System.out.println(result);
         String jsonData = getJsonObject(result);
         return  jsonhandler.youtubeJson(jsonData);
     }
