@@ -71,9 +71,7 @@ public class jsonHadnlerimpl implements jsonHandler {
                 int start = data.indexOf(key[i]);
                 int end= data.indexOf("}");
                 String value = data.substring(start+key[i].length()+3, end);
-                value=value.replace("\\", "");
-                value = value.replace(",","");
-                value= value.replace("\"","");
+                value = getString(value);
                 jsonobj.put(key[i], value);
             }
             else if(key[i]=="html"){
@@ -87,9 +85,7 @@ public class jsonHadnlerimpl implements jsonHandler {
                 int start = data.indexOf(key[i]);
                 int end = data.indexOf(key[i + 1]);
                 String value = data.substring(start+key[i].length()+2, end-1);
-                value=value.replace("\\", "");
-                value = value.replace(",","");
-                value= value.replace("\"","");
+                value = getString(value);
                 jsonobj.put(key[i], value);
             }
 
@@ -98,6 +94,12 @@ public class jsonHadnlerimpl implements jsonHandler {
 
     }
 
+    private String getString(String value) {
+        value = value.replace("\\", "");
+        value = value.replace(",","");
+        value = value.replace("\"","");
+        return value;
+    }
 
 
 }
