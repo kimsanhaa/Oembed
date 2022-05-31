@@ -3,7 +3,7 @@ package oembed.project.oEmbed.controller;
 
 
 import oembed.project.oEmbed.service.OembedServiceimpl;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
